@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useStateContext } from '../context/StateContext'
 
 const Navbar = () => {
-  const {search,setSearch} = useStateContext();
+  const {search,setSearch,state:{cart}} = useStateContext();
   return (
     <div className='mx-auto my-5 flex justify-between align-middle container'>
         <Link to="/">
@@ -17,7 +17,7 @@ const Navbar = () => {
     <Link to='/cart' >
     <div className='flex me-3 self-center text-2xl'>
       <BsCartDashFill  />
-      <small className='bg-tertiary px-2 rounded'>10</small>
+      <small className='bg-tertiary px-2 rounded'>{cart.length}</small>
     </div>
       </Link>
     <div className='flex'>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { useStateContext } from '../context/StateContext';
 
 const Card = ({product}) => {
 
@@ -7,6 +8,7 @@ const Card = ({product}) => {
     const title = txt.substring(0,25);
     const des = product.description;
     const desc = des.substring(0,40);
+    const {dispatch} = useStateContext();
   return (
    
 <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-[300px]">
@@ -16,7 +18,7 @@ const Card = ({product}) => {
     </a>
     <p className="mb-3 font-normal text-secondary">{desc}...</p>
    
-    <a href="#" className="inline-flex items-center hover:underline bg-primary rounded py-1 px-2 me-2">
+    <a href="#" onClick={()=>dispatch({type:"ADD_TO_CART",payload:product})} className="inline-flex items-center hover:underline bg-primary rounded py-1 px-2 me-2">
         Go To Cart
     </a>
 
